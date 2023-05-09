@@ -1,24 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
 function App() {
+  let name: string = "Halil";
+  let age: number = 27;
+  let done: boolean = true;
+  let trial: any = "deneme"; // herhangi bir tipte olabilir
+  let phone: number | string = "0535 555 55 55"; // number veya string olabilir
+
+  //Objeler için her değerin type'ını tek tek girmek zor olabilir bunun için type ve interface kullanılır
+  /* type */
+  type Object = {
+    name: string,
+    age: number,
+    done?: boolean // type tanımlaması yapmadan önce ? koyarak optional yapılır
+  }
+
+  let obj: Object = {
+    name: "halil",
+    age: 27,
+   //done: true
+  }
+  /* */
+
+  /* interface */
+  interface IObject {
+    name: string,
+    age: number,
+    done?: boolean,
+  }
+
+  interface IObjectTwo extends IObject {
+    accept?: boolean
+  }
+
+  let iobj: IObjectTwo = {
+    name: "halil",
+    age: 27,
+  }
+  /* */
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <div>{name + " " + age}</div>
+        <div> {done}</div>
+        <div> {trial}</div>
+        <div> {phone}</div>
+      </div>
     </div>
   );
 }
